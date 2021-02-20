@@ -1,7 +1,7 @@
 #x735 Powering on /reboot /shutdown from hardware
 #!/bin/bash
 
-sudo bash -c "echo '#!/bin/bash
+echo '#!/bin/bash
 
 SHUTDOWN=4
 REBOOTPULSEMINIMUM=200
@@ -36,13 +36,13 @@ while [ 1 ]; do
       exit
     fi
   fi
-done' > /usr/local/bin/x735pwr.sh"
+done' | sudo tee /usr/local/bin/x735pwr.sh
 sudo chmod +x /usr/local/bin/x735pwr.sh
 
 
 #X735 full shutdown through Software
 
-sudo bash -c "echo '#!/bin/bash
+echo '#!/bin/bash
 
 BUTTON=18
 
@@ -61,13 +61,13 @@ echo "X735 Shutting down..."
 /bin/sleep $SLEEP
 
 #restore GPIO 18
-echo "0" > /sys/class/gpio/gpio$BUTTON/value' > /usr/local/bin/x735shutdown.sh"
+echo "0" > /sys/class/gpio/gpio$BUTTON/value' | sudo tee /usr/local/bin/x735shutdown.sh
 sudo chmod +x /usr/local/bin/x735shutdown.sh
 
 
 #X735 Systemd service
 
-sudo bash -c "echo '[Unit]
+echo '[Unit]
 Description=Startup Script
 After=reboot.target
 
@@ -76,6 +76,6 @@ Type=simple
 ExecStart=/bin/bash /usr/local/sbin/x735pwr.sh
 
 [Install]
-WantedBy=multi-user.target' > /etc/systemd/system/shutdown_x735.service"
+WantedBy=multi-user.target' | sudo tee /etc/systemd/system/shutdown_x735.service"
 
 sudo systemctl enable shutdown_x735
