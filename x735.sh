@@ -37,7 +37,7 @@ while [ 1 ]; do
     fi
   fi
 done' > /usr/local/bin/x735pwr.sh"
-sudo chmod +x /etc/x735pwr.sh
+sudo chmod +x /usr/local/bin/x735pwr.sh
 
 
 #X735 full shutdown through Software
