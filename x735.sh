@@ -73,7 +73,7 @@ After=reboot.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /usr/local/sbin/x735pwr.sh
+ExecStart=/bin/bash /usr/local/bin/x735pwr.sh
 
 [Install]
 WantedBy=multi-user.target' | sudo tee /etc/systemd/system/shutdown_x735.service
