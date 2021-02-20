@@ -76,6 +76,6 @@ Type=simple
 ExecStart=/bin/bash /usr/local/sbin/x735pwr.sh
 
 [Install]
-WantedBy=multi-user.target' | sudo tee /etc/systemd/system/shutdown_x735.service"
+WantedBy=multi-user.target' | sudo tee /etc/systemd/system/shutdown_x735.service
 
 sudo systemctl enable shutdown_x735
