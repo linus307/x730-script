@@ -16,7 +16,7 @@ How to use?
 
 * step 2:
 
-> printf "%s\n" "alias x730off='sudo x730shutdown.sh'" >> ~/.bashrc
+> printf "%s\n" "alias x735off='sudo x735shutdown.sh'" >> ~/.bashrc
 
 * step 3:
 
