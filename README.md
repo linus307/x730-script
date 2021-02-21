@@ -16,6 +16,10 @@ How to use?
 
 * step 2:
 
+> printf "%s\n" "alias x730off='sudo x730shutdown.sh'" >> ~/.bashrc
+
+* step 3:
+
 > sudo reboot
 
 * how to safe shut down, run the following comamdn:
