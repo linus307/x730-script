@@ -24,14 +24,14 @@ while [ 1 ]; do
     while [ $shutdownSignal = 1 ]; do
       /bin/sleep 0.02
       if [ $(($(date +%s%N | cut -b1-13)-$pulseStart)) -gt $REBOOTPULSEMAXIMUM ]; then
-        echo "X730 Shutting down", SHUTDOWN, ", halting Rpi ..."
+        echo "X735 Shutting down", SHUTDOWN, ", halting Rpi ..."
         sudo poweroff
         exit
       fi
       shutdownSignal=$(cat /sys/class/gpio/gpio$SHUTDOWN/value)
     done
     if [ $(($(date +%s%N | cut -b1-13)-$pulseStart)) -gt $REBOOTPULSEMINIMUM ]; then 
-      echo "X730 Rebooting", SHUTDOWN, ", recycling Rpi ..."
+      echo "X735 Rebooting", SHUTDOWN, ", recycling Rpi ..."
       sudo reboot
       exit
     fi
@@ -69,7 +69,6 @@ sudo chmod +x /usr/local/bin/x735shutdown.sh
 
 echo '[Unit]
 Description=Startup Script
-After=reboot.target
 
 [Service]
 Type=simple
